@@ -1,1 +1,1 @@
-# EDL
+Repositório da disciplina EDL
