@@ -32,11 +32,14 @@ notaM8 aluno = (nota1 aluno>=8) && (nota2 aluno >=8)
 -- 8s func,ex: oitos turma1 
 oitos :: [ (String, Float, Float)] -> [String]
 oitos turma= map nome( filter notaM8 turma1)
-
+converter :: Int->Float
+converter x= a where a = fromIntegral x:: Float
+quant:: Float
+quant= converter(length turma1)
 mediaF:: Float->Float-> Float
-mediaF a b= (a+b)/2
+mediaF a b= a+ b
 todas :: [ (String,Float,Float) ] -> (Float, Float, Float)
-todas turma = (foldr mediaF 0 notas1, foldr mediaF 0 notas2, foldr mediaF 0 (medias turma1))
+todas turma = ((foldr mediaF 0 notas1)/quant, (foldr mediaF 0 notas2)/quant, (foldr mediaF 0 (medias turma1))/quant)
 
 pegami5:: Float-> Bool
 pegami5 x= x<=5
@@ -61,4 +64,4 @@ nottopretty str aluno= str ++"\n"++aluno
 pretty :: [ (String,Float,Float) ] -> String
 pretty turma=foldr nottopretty "" (keepgoing turma1)
 
-main = putStrLn (pretty turma1)
+main = print (todas turma1)
