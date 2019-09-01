@@ -1,3 +1,4 @@
+
 turma1 :: [ (String,Float,Float) ]
 turma1 = [ ("Joao",7.5,3.5), ("Maria",10.0,8.0), ("Jose",5.0,3.0),("Eduardo", 7.0,8.0)]
 nome :: (String,Float,Float) -> String
@@ -21,6 +22,10 @@ medias turma= map media turma1
 notas1 :: [Float]
 notas1= map nota1 turma1
 
+---NOTAS 2--
+notas2 :: [Float]
+notas2= map nota2 turma1
+
 --- Nota > 7
 notaM8 :: (String, Float, Float) -> Bool
 notaM8 aluno = (nota1 aluno>=8) && (nota2 aluno >=8)
@@ -29,10 +34,9 @@ notaM8 aluno = (nota1 aluno>=8) && (nota2 aluno >=8)
 oitos :: [ (String, Float, Float)] -> [String]
 oitos turma= map nome( filter notaM8 turma1)
 
+mediaF:: Float->Float-> Float
+mediaF a b= (a+b)/2
 todas :: [ (String,Float,Float) ] -> (Float, Float, Float)
 todas turma = (foldr mediaF 0 notas1, foldr mediaF 0 notas2, foldr mediaF 0 (medias turma1))
 
-main= print(oitos turma1)
-
-
---main = print( foldr func )
+main= print(todas turma1)
