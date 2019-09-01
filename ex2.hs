@@ -8,20 +8,28 @@ nota1 (_,n1,_) = n1
 
 nota2 :: (String,Float,Float) -> Float
 nota2 (_,_,n2) = n2
-
+--- Retorna media---
 media :: (String,Float,Float) -> Float
 media aluno = ((nota1 aluno) + (nota2 aluno)) / 2
+--mdaturma:: [Float]
+--mdaturma= map media turma1
+-- medias func. You need to use func <Array of tuples>
+medias:: [ (String, Float, Float)] -> [Float]
+medias turma= map media turma1
 
-medias :: [ (String,Float,Float) ] -> [Float]
-medias turma = map media turma1
-
+---NOTAS 1--
 notas1 :: [Float]
-notas1 = map nota1 turma1
+notas1= map nota1 turma1
 
-notaboas:: (String,Float,Float)->Bool
-notaboas (a,b,c)= 
+--- Nota > 7
+notaM8 :: (String, Float, Float) -> Bool
+notaM8 aluno = (nota1 aluno>=8) && (nota2 aluno >=8)
 
-oitos:: [(String,Float,Float)]->[String]
-oitos turma1=filter notaboas turma1
+-- 8s func,ex: oitos turma1 
+oitos :: [ (String, Float, Float)] -> [String]
+oitos turma= map nome( filter notaM8 turma1)
 
-main = print(oitos)
+main= print(oitos turma1)
+
+
+--main = print( foldr func )
