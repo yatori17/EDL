@@ -1,4 +1,5 @@
 
+
 turma1 :: [ (String,Float,Float) ]
 turma1 = [ ("Joao",7.5,3.5), ("Maria",10.0,8.0), ("Jose",5.0,3.0),("Eduardo", 7.0,8.0)]
 nome :: (String,Float,Float) -> String
@@ -39,4 +40,11 @@ mediaF a b= (a+b)/2
 todas :: [ (String,Float,Float) ] -> (Float, Float, Float)
 todas turma = (foldr mediaF 0 notas1, foldr mediaF 0 notas2, foldr mediaF 0 (medias turma1))
 
-main= print(todas turma1)
+pegami5:: Float-> Bool
+pegami5 x= x<=5
+
+menorq5:: [(String, Float, Float)] -> [Float]
+menorq5 turma = filter pegami5 (notas1 ++ notas2)
+baixas :: [Float]
+baixas= menorq5 turma1
+main= print(baixas)
