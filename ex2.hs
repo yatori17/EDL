@@ -29,6 +29,9 @@ notaM8 aluno = (nota1 aluno>=8) && (nota2 aluno >=8)
 oitos :: [ (String, Float, Float)] -> [String]
 oitos turma= map nome( filter notaM8 turma1)
 
+todas :: [ (String,Float,Float) ] -> (Float, Float, Float)
+todas turma = (foldr mediaF 0 notas1, foldr mediaF 0 notas2, foldr mediaF 0 (medias turma1))
+
 main= print(oitos turma1)
 
 
