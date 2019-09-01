@@ -1,5 +1,3 @@
-
-
 turma1 :: [ (String,Float,Float) ]
 turma1 = [ ("Joao",7.5,3.5), ("Maria",10.0,8.0), ("Jose",5.0,3.0),("Eduardo", 7.0,8.0)]
 nome :: (String,Float,Float) -> String
@@ -27,7 +25,7 @@ notas1= map nota1 turma1
 notas2 :: [Float]
 notas2= map nota2 turma1
 
---- Nota > 7
+--- Nota > 8
 notaM8 :: (String, Float, Float) -> Bool
 notaM8 aluno = (nota1 aluno>=8) && (nota2 aluno >=8)
 
@@ -47,4 +45,20 @@ menorq5:: [(String, Float, Float)] -> [Float]
 menorq5 turma = filter pegami5 (notas1 ++ notas2)
 baixas :: [Float]
 baixas= menorq5 turma1
-main= print(baixas)
+
+--Imprimir !
+--Converter Medias em String
+
+
+situacao:: (String, Float,Float)-> String
+situacao aluno= if(((nota1 aluno)+(nota2 aluno))/2 >5)then "(aprovado)" else  "(reprovado)"
+aSolution:: (String,Float,Float)-> String
+aSolution aluno= nome aluno ++" "++ show(((nota1 aluno)+(nota2 aluno))/2)++ " " ++(situacao aluno)
+keepgoing:: [(String, Float, Float)] -> [String]
+keepgoing turma = map aSolution turma1
+nottopretty:: String->String -> String
+nottopretty str aluno= str ++"\n"++aluno
+pretty :: [ (String,Float,Float) ] -> String
+pretty turma=foldr nottopretty "" (keepgoing turma1)
+
+main = putStrLn (pretty turma1)
