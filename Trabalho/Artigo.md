@@ -88,7 +88,7 @@ As duas linguagens diferem muito uma da outra, por conta da tipagem, e da sintax
 
 Funcionalidade:
 
-Com o defer em Go, você empilha o comando de fechamento de arquivo e **garante** que o arquivo irá fechar no final da execução do programa, similar a try-finally do java. Em Lisp, não tem o empilhamento do comando.
+Com o defer em Go, você empilha o comando de fechamento de arquivo e **garante** que o arquivo irá fechar no final da execução do programa, similar a try-finally do java. Em Lisp, você não tem a garantia do fechamento do arquivo.
   
   
 Readability:  
