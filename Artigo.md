@@ -65,7 +65,7 @@ func main() {
 ```  
 Fibonacci em Lisp:  
   
-  
+``` Lisp  
 (defun fibonacci(n)  
   (cond  
         ((eq n 0) 0)  
@@ -80,7 +80,7 @@ Fibonacci em Lisp:
     (loop for a from 0 to 40      
             do (format str (write-to-string(fibonacci a)))  
          (format str "~%" )) )  
-  
+ ``` 
   
 As duas linguagens diferem muito uma da outra, por conta da tipagem, e da sintaxe das mesmas.  
   
@@ -94,7 +94,7 @@ Na questão readability, Go ganha de Lisp, pelo fato de que em Lisp, todas as op
 Writeability:  
   
   
-Analisando Writeability, claramente Go ganha essa disputa, já que em Lisp você precisa de um alto nível de abstração, especialmente quando as funções são utilizadas, suprimindo muitos detalhes da programação.  
+Analisando Writeability, claramente Lisp ganha essa disputa, já que em Lisp você tem um alto nível de abstração, especialmente quando as funções são utilizadas, suprimindo muitos detalhes da programação.  
   
   
 Expressiveness:  
