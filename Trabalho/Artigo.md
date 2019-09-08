@@ -34,12 +34,14 @@ Classificação
 * Open-source:   
    * Código fonte disponível e permite a colaboração de qualquer desenvolvedor.  
 Avaliação comparativa    
+* Funcionalidade: Defer 
   
         Os dois programas a seguir, calculam o Fibonacci de 0 até 40 e guardam em um arquivo.  
-  
+
+
 Fibonacci em Go:  
   
-```GO  
+```go  
 package main  
 import (    
     "fmt"  
@@ -65,7 +67,7 @@ func main() {
 ```  
 Fibonacci em Lisp:  
   
-``` Lisp  
+``` lisp  
 (defun fibonacci(n)  
   (cond  
         ((eq n 0) 0)  
@@ -83,6 +85,10 @@ Fibonacci em Lisp:
  ``` 
   
 As duas linguagens diferem muito uma da outra, por conta da tipagem, e da sintaxe das mesmas.  
+
+Funcionalidade:
+
+Com o defer em Go, você empilha o comando de fechamento de arquivo e **garante** que o arquivo irá fechar no final da execução do programa, similar a try-finally do java. Em Lisp, não tem o empilhamento do comando.
   
   
 Readability:  
