@@ -39,7 +39,7 @@ Avaliação comparativa
   
 Fibonacci em Go:  
   
-  
+```GO  
 package main  
 import (    
     "fmt"  
@@ -62,7 +62,7 @@ func main() {
             fmt.Fprintln(f,strconv.Itoa(fib(i)))  
     }  
 }  
-  
+```  
 Fibonacci em Lisp:  
   
   
