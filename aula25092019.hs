@@ -5,9 +5,9 @@ data Arvore a= Galho a (Arvore a) (Arvore a) | Folha
   deriving Show
 
 
-
-a1 = Galho 5( Galho 3 Folha (Galho 2 Folha ( Galho 1 Folha Folha))) (Galho 4 Folha Folha)
-a2 = Galho 1 (Galho 3 Folha Folha) (Galho 7 Folha Folha)
+a0 = Galho 10 Folha Folha
+a1 = Galho 5( Galho 3 Folha (Galho 2 Folha ( Galho 1 Folha a0))) a0
+a2 = Galho 1 a0 a0
 quantasFolhas:: Arvore a-> Int
 quantasFolhas Folha   = 1
 quantasFolhas (Galho _ a1 a2)= quantasFolhas a1 + quantasFolhas a2
@@ -19,4 +19,8 @@ alturaArvore ( Galho _ a1 a2)= 1+ maior( alturaArvore a1) (alturaArvore a2)
     maior:: Int -> Int -> Int
     maior x y= if x> y then x else y
 
-main= print ((quantasFolhas a1),(quantasFolhas a2),(alturaArvore a1), (alturaArvore a2))
+somaGalhos :: Arvore Int-> Int
+somaGalhos Folha=0
+somaGalhos (Galho v a1 a2)= v+ somaGalhos a1+ somaGalhos a2
+
+main= print ((quantasFolhas a1),(quantasFolhas a2),(alturaArvore a1), (alturaArvore a2),somaGalhos a1,somaGalhos a2)
