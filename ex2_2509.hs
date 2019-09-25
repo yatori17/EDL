@@ -23,7 +23,7 @@ altura (Galho _ a1 a2) = 1 + maior (altura a1) (altura a2)
 
 espelho:: Arvore -> Arvore
 espelho Folha= Folha
-espelho (Galho x a1 a2)= (Galho x a2 a1)
+espelho (Galho x a1 a2)= (Galho x (espelho a2) (espelho a1))
 
 
 
