@@ -1,3 +1,6 @@
+/*Comparando os códigos em Haskell e em C, é notório que em Haskell é mais expressivo.
+O código em Haskell é menor e a sua linguagem é muito mais próxima da nossa, reduzindo o nível de abstração
+*/
 #include <stdio.h>
 
 struct Exp {
