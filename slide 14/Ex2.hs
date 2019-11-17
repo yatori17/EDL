@@ -60,7 +60,8 @@ verificaProg (Dcl id ) = True
 avaliaProg :: Cmd -> Maybe Int 
 avaliaProg (Dcl id) = Nothing
 avaliaProg (Atr id exp) = Just (avaliaExp memory exp)
-avaliaProg (Seq a b ) = ret 
+
+
 
 c3= Seq ( Atr "x" (Num 10)) (Dcl "x")
-main = print ( avaliaProg c3)
+main = print ( avaliaProg c2)
