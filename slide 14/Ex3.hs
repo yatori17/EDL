@@ -1,7 +1,7 @@
 data Cmd = Atr String Exp
         |  Seq Cmd Cmd
         |  Dcl String
-        |  Nulo
+        |  Nop
         deriving Show 
 data Exp = Num Int
         |   Add Exp Exp 
@@ -44,31 +44,35 @@ avaliaExp mem (Sub a b) = (avaliaExp mem a) - (avaliaExp  mem b)
 avaliaExp mem (Var id) = consulta mem id
 
 avaliaCmd:: Mem -> Cmd -> Mem
+avaliaCmd mem (Dcl id) = mem
+avaliaCmd mem Nop = mem 
 avaliaCmd mem (Atr id exp) = escreve mem id (avaliaExp mem exp)
 avaliaCmd mem (Seq a b) = avaliaCmd mem' b where
                           mem'= avaliaCmd mem a
+
 
 --avaliaCmd (Atr id exp) = 
 --avaliaProg :: Cmd -> Maybe Int
 
 memory=[]
---2.Crie uma função verificaProg :: Cmd -> Bool, que recebe um comando e retorna se o comando é válido de acordo com a questão 1
+--Crie uma função eliminaDcl :: Cmd -> Cmd que recebe um comando e retorna um novo comando sem nenhum Dcl em sua árvore.
 verificaProg :: Cmd -> Bool
 verificaProg (Atr id exp) =verificaExp memory exp
 verificaProg (Seq a b ) = verificaProg a && verificaProg b
 verificaProg (Dcl id ) = True
 
---avaliaProg :: Cmd -> Maybe Int 
---avaliaProg c = if verificaProg c1 == False then Nothing else Just (consulta mem' "ret") where 
- -- mem' = avaliaCmd [] c1
-
-
 eliminaDcl :: Cmd -> Cmd
-eliminaDcl (Dcl id) = (Nulo)
-eliminaDcl (Nulo) = (Nulo)
-eliminaDcl (Atr id exp)= (Atr id exp)
-eliminaDcl (Seq a b ) = (Seq (eliminaDcl a) (eliminaDcl b))
---Altere a função avaliaProg da questão 2 de modo que ela não mais avalie comandos Dcl inócuos.
+eliminaDcl (Dcl id) = Nop
+eliminaDcl (Seq (Dcl id) c2) = eliminaDcl c2
+eliminaDcl (Seq c1 (Dcl id)) = eliminaDcl c1
+eliminaDcl (Seq c1 c2)= Seq (eliminaDcl c1) (eliminaDcl c2)
+eliminaDcl (Atr id e)=(Atr id e) 
+
+
+avaliaProg :: Cmd -> Maybe Int 
+avaliaProg c = if(verificaProg c) then Just (avaliaExp (avaliaCmd [] (eliminaDcl c)) (Var "ret")) else Nothing 
+
+
 
 c3= Seq ( Atr "x" (Num 10)) (Dcl "x")
-main = print ( eliminaDcl c0)
+main = print ( avaliaProg c2)
