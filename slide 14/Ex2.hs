@@ -43,9 +43,11 @@ avaliaExp mem (Sub a b) = (avaliaExp mem a) - (avaliaExp  mem b)
 avaliaExp mem (Var id) = consulta mem id
 
 avaliaCmd:: Mem -> Cmd -> Mem
+avaliaCmd mem (Dcl id) = mem
 avaliaCmd mem (Atr id exp) = escreve mem id (avaliaExp mem exp)
 avaliaCmd mem (Seq a b) = avaliaCmd mem' b where
                           mem'= avaliaCmd mem a
+
 
 --avaliaCmd (Atr id exp) = 
 --avaliaProg :: Cmd -> Maybe Int
@@ -58,8 +60,7 @@ verificaProg (Seq a b ) = verificaProg a && verificaProg b
 verificaProg (Dcl id ) = True
 
 avaliaProg :: Cmd -> Maybe Int 
-avaliaProg (Dcl id) = Nothing
-avaliaProg (Atr id exp) = Just (avaliaExp memory exp)
+avaliaProg c = if(verificaProg c) then Just (avaliaExp (avaliaCmd [] c) (Var "ret")) else Nothing 
 
 
 
